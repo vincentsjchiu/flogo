@@ -1,6 +1,7 @@
 package udask_dio
-// #cgo LDFLAGS: -L/home/ubuntu/usb-dask_101_i686/lib -lusb_dask
-// #cgo CFLAGS: -I/home/ubuntu/usb-dask_101_i686/include
+//#cgo LDFLAGS:-L/home/adlink/Desktop/usb-dask_101_x86_64_0522/lib -lusb_dask64
+
+//#cgo CFLAGS:-I/home/adlink/Desktop/usb-dask_101_x86_64_0522/include
 // #include "udask.h"
 import "C"
 import (
