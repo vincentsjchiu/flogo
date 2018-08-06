@@ -3,6 +3,7 @@ package udask_dio
 //#cgo CFLAGS:-I/home/adlink/Desktop/usb-dask_101_x86_64_0522/include
 //#include "udask.h"
 import "C"
+import"unsafe"
 import (
 	"fmt"
 	"github.com/TIBCOSoftware/flogo-lib/core/action"
@@ -44,9 +45,31 @@ func (t *MyTrigger) Metadata() *trigger.Metadata {
 // Start implements trigger.Trigger.Start
 func (t *MyTrigger) Start() error {
 	// start the trigger
-        var cardnum uint16 = 1;
-        var card = C.UD_Register_Card(C.USB_2405, C.U16(cardnum));
-        fmt.Printf("%d\n", card);
+        var cardnum,ChanConfig C.U16;
+        var card,err C.I16;
+        var Value C.U32;
+        var Voltage C.F64;
+        var Channel,AdRange C.U16;
+        cardnum=0;
+        Channel=0;
+        AdRange = C.AD_B_10_V;
+        card=C.UD_Register_Card(C.USB_2405,cardnum)
+        fmt.Printf("%d\n",card)
+        ChanConfig = ( C.P2405_AI_EnableIEPE | C.P2405_AI_Coupling_AC | C.P2405_AI_Differential);
+        fmt.Printf("%d\n",ChanConfig)
+        err = C.UD_AI_2405_Chan_Config( C.U16(card), ChanConfig, ChanConfig, ChanConfig, ChanConfig );
+        fmt.Printf("%d\n",err)
+        i:=0
+        for i<500{
+        err = C.UD_AI_ReadChannel(C.U16(card), Channel, AdRange,(*C.U16)(unsafe.Pointer(&Value)) );
+        err=C.UD_AI_VoltScale32(C.U16(card), AdRange, 0, Value, &Voltage);
+        fmt.Printf("%8.6f\n",Voltage)
+        i+=1;
+
+        }
+        err =C.UD_Release_Card(C.U16(card));
+        fmt.Printf("Release Card%d\n",err)
+
 	return nil
 }
 
