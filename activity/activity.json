@@ -2,7 +2,7 @@
   "name": "HelloWorld",
   "version": "0.0.1",
   "type": "flogo:activity",
-  "ref": "github.com/yourusername/yourrepository",
+  "ref": "github.com/vincentsjchiu/flogo/activity",
   "description": "activity description",
   "author": "Your Name <you.name@example.org>",
   "inputs":[
