@@ -1,8 +1,8 @@
 {
-  "name": "MyHello",
+  "name": "HelloWorld",
   "version": "0.0.1",
   "type": "flogo:activity",
-  "ref": "github.com/vincentsjchiu/flogo/activity",
+  "ref": "github.com/yourusername/yourrepository",
   "description": "activity description",
   "author": "Your Name <you.name@example.org>",
   "inputs":[

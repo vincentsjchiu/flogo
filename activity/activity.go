@@ -1,4 +1,4 @@
-package MyHello
+package HelloWorld
 
 import (
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
@@ -7,7 +7,7 @@ import (
 
 // THIS IS ADDED
 // log is the default package logger which we'll use to log
-var log = logger.GetLogger("activity-MyHello")
+var log = logger.GetLogger("activity-helloworld")
 
 // MyActivity is a stub for your Activity implementation
 type MyActivity struct {

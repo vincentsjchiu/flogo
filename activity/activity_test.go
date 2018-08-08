@@ -1,4 +1,4 @@
-package MyHello
+package HelloWorld
 
 import (
 	"io/ioutil"
